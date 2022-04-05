@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freshclass</title>
+  <link rel="stylesheet" href="./profile.css" type="text/css" />
+  <link rel="shortcut icon" href="./../../../Assets/Logo/Favicon.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@500&family=Poppins:wght@500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+  <section id="main">
+    <div class="top-nav">
+      <div class="page-name">
+        <span>Profiles</span><span>
+          <select id="select" onchange="changeselect()">
+            <option value="student">student</option>
+            <option value="coach">coach</option>
+          </select>
+        </span>
+      </div>
+      <div class="search-bar">
+        <div class="search-div">
+          <input type="text" id="search" placeholder="search...">
+          <div class="seach-icon"><em class="fal fa-search"></em></div>
+        </div>
+      </div>
+      <div class="profile">
+        <div class="pro-pic">
+          <button class="dropdownbtn" onclick="dropDown()"></button>
+          <img id="proimg" src="" alt="profile picture" width="100%">
+        </div>
+
+        <div class="dropdown" id="dropdown">
+          <button onclick="profileEdit()">Profile</button>
+          <button onclick="logOut()">Logout</button>
+          <button id="statusButton" onclick="statusChange()">Leave</button>
+        </div>
+      </div>
+      <div id="noti"><span class="dot"></span><em class="fal fa-bell"></em></div>
+    </div>
+    <div class="left-nav">
+      <div class=" logo-div">
+        <img src="./../../../Assets/Logo/logo_png.png" alt="logo" width="80%" />
+      </div>
+      <div class="main-menu">
+        <div class="button-div">
+          <a href="./profile.html" class="button visited">
+            <em class="fal fa-users"></em><span class="box tooltip">Profiles</span>
+          </a>
+        </div>
+        <div class="button-div">
+          <a href="./../schedule/schedule.html" class="button">
+            <em class="fal fa-clock"></em><span class="box tooltip">Schedule</span>
+          </a>
+        </div>
+        <div class="button-div">
+          <a href="./../attendence/attendence.html" class="button">
+            <em class="fal fa-clipboard-user"></em><span class="box tooltip">Attendence</span>
+          </a>
+        </div>
+        <div class="button-div">
+          <a href="./../assignment/assignment.html" class="button">
+            <em class="fal fa-books"></em><span class="box tooltip">Assignment</span>
+          </a>
+        </div>
+        <div class="button-div">
+          <a href="./../query/query.html" class="button">
+            <em class="fal fa-comments-alt"></em><span class="box tooltip">Query</span>
+          </a>
+        </div>
+        <div class="button-div">
+          <a href="https://freshworks.zoom.us/my/b2classroom" class="button">
+            <em class="fal fa-video"></em><span class="box tooltip">Class</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="main-div" class="main-width">
+      <div id="student-head">
+        <div id="student-name">Name</div>
+        <div id="student-id">Id</div>
+        <div id="student-squad">Squad</div>
+        <div id="student-status">Status</div>
+        <div id="student-batch">Batch</div>
+      </div>
+      <div id="students-profiles"></div>
+
+      <div id="coach-head" class="display">
+        <div id="coach-name">Name</div>
+        <div id="coach-id">Id</div>
+        <div id="coach-Position">Position</div>
+        <div id="coach-status">Status</div>
+      </div>
+      <div id="coach-profiles" class="display">
+      </div>
+    </div>
+    <div id="slider" class="slider-width">
+      <div class="close">
+        <div id="reg-name-div"></div>
+        <div class="close-icon">
+          <div class="clo-icon" onclick="closereg()">
+            <em class="fas fa-times"></em>
+          </div>
+        </div>
+      </div>
+      <div id="profile-show" class="profile-show display">
+        <div class="prof">
+          <img id="profile-pictue" alt="Profile" width="100%">
+        </div>
+        <div class="pro-detial">
+          <div id="prifile-name"></div>
+          <div id="profile-icons">
+            <a id="git" href="" target="blank"><div id="profile-git"><span id="profileIcons"><em
+                    class="fab fa-github"></em></span>Github</div></a>
+            <div id="profile-edit" onclick="editFormShow()"><span id="profileIcons"><em class="fas fa-pen"></em></span>Edit</div>
+            <a id="slack" href="" target="blank"><div id="profile-slack"><span id="profileIcons"><em
+                    class="fab fa-slack"></em></span>Slack</div></a>
+          </div>
+          <div class="date">
+            <h4>Local time</h4>
+            <div id="profile-time"></div>
+            <h4>Date of birth</h4>
+            <div id="profile-dob"></div>
+            <h4>Gmail</h4>
+            <div id="profile-mail"></div>
+            <h4>Phone number</h4>
+            <div id="profile-number"></div>
+            <h4>City</h4>
+            <div id="profile-city"></div>
+            <h4>Department</h4>
+            <div id="profile-department"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <form onsubmit="editForm(event)" id="editForm" class="display">
+      <div id="editFormDiv">
+        <div class="editFormContainer">
+          <div id="profileChanege">
+            <img id="img-input" src="" alt="change-profile" width="100%">
+          </div>
+          <div id="uploadImg">Upload Photo</div>
+          <div id="removeImg">Remove Photo</div>
+          <div id="gitOn">
+            <div>Github</div>
+            <div id="gitSwitch">
+              <label class="switch">
+                <input type="checkbox" id="checkGitOnOff" onchange="git()">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+          <div></div>
+          <div id="slackOn">
+            <div>Slack</div>
+            <div id="slackSwitch">
+              <label class="switch">
+                <input type="checkbox" id="checkSlackOnOff" onchange="slack()">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="editFormContainer">
+          <div id="formClose">
+            <div id="formCloseIcon" onclick="closeEditform()">
+              <em class="fas fa-times"></em>
+            </div>
+          </div>
+          <div class="detial-div">
+            <div class="det">
+              <div>
+                <label for="reg-name">Firstname</label>
+                <input type="text" id="reg-name" placeholder="Firstname">
+              </div>
+              <div>
+                <label for="reg-lastname">Lastname</label>
+                <input type="text" id="reg-lastname" placeholder="Lastname">
+              </div>
+              <div>
+                <label for="reg-id">Id no</label>
+                <input type="text" id="reg-id" placeholder="Id no" onkeyup="idnocheck()">
+              </div>
+              <div>
+                <label for="reg-squad">Squad name</label>
+                <input type="text" id="reg-squad" placeholder="Squad name">
+              </div>
+              <div>
+                <label for="reg-department">Department</label>
+                <input type="text" id="reg-department" placeholder="Department">
+              </div>
+              <div>
+                <label for="reg-gen">Gender</label>
+                <select id="reg-gen" onchange="gender()">
+                  <option value="male" selected>Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="reg-dob">Date of birth</label>
+                <input type="date" id="reg-dob">
+              </div>
+              <div>
+                <label for="reg-mail">Mail id</label>
+                <input type="email" id="reg-mail" placeholder="Mail@freshclass.com" onkeyup="emailcheck()">
+              </div>
+              <div>
+                <label for="reg-city">City</label>
+                <input type="text" id="reg-city" placeholder="City">
+              </div>
+              <div>
+                <label for="reg-number">Phone no</label>
+                <input type="tel" id="reg-number" placeholder="Phone no">
+              </div>
+              <div id="git-input" class="display">
+                <label for="reg-git">Github</label>
+                <input type="text" id="reg-git" placeholder="Git link">
+              </div>
+              <div id="slack-input" class="display">
+                <label for="reg-slack">Slack</label>
+                <input type="text" id="reg-slack" placeholder="Slack link">
+              </div>
+              <div>
+                <label for="reg-password">Password</label>
+                <input type="text" id="reg-password" placeholder="Password">
+              </div>
+              <button id="submit" type="submit">Save Changes</button>
+            </div>
+          </div>
+        </div>
+    </form>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+    integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./profile.js"></script>
+</body>
+
+</html>
