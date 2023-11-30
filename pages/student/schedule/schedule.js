@@ -7,23 +7,23 @@ function schedulebtn() {
 }
 
 function attendencebtn() {
-  window.location.href = "./../attendence/attendence.html";
+  window.location.href = "#";
 }
 
 function assignmentbtn() {
-  window.location.href = "./../assignment/assignment.html";
+  window.location.href = "#";
 }
 
 function querybtn() {
-  window.location.href = "./../query/query.html";
+  window.location.href = "#";
 }
 
 function classbtn() {
-  window.location.href = "https://freshworks.zoom.us/my/b2classroom";
+  window.location.href = "#";
 }
 
 function settingsbtn() {
-  window.location.href = "./../settings/settings.html";
+  window.location.href = "#";
 }
 
 document.getElementById("reg-name-div").innerText = "Calendar";
